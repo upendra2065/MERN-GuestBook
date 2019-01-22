@@ -1,0 +1,39 @@
+.NameinputForm{
+    margin-left:1.2rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border:2px solid rgb(165, 165, 165);
+    outline: none; 
+}
+.MessageinputForm{
+    margin-left:1.2rem;
+    margin-bottom: 0.4rem;
+    border-radius: 7px;
+    width:27.2rem;
+    border:2px solid rgb(165, 165, 165);
+    height:4.5rem;
+    outline: none;
+}
+.submitbuttonguestbook{
+    margin-left:1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color:rgb(92, 91, 91);
+    height: 1.5rem;
+    width:8rem;
+    border:none;
+    outline: none;
+}
+.submitbuttonguestbook:hover{
+    background-color:rgb(49, 48, 48);
+}
+.submit-message{
+    color:white;
+    font-weight: 800;
+}
+::placeholder {
+    padding-left:0.4rem;
+}
+:focus::placeholder {
+    opacity: 0;
+}
