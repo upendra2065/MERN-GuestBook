@@ -3,6 +3,7 @@ const errorHandler = require('errorhandler');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 const Signature = require('./models/signatureSchema.js');
 
 const app = express();
@@ -14,16 +15,14 @@ app.use(errorHandler());
 const url =  process.env.MONGOLAB_URI;
 mongoose.connect(url, { useNewUrlParser: true });
 
-app.get('/', function(req, res) {
-    res.json('you did it');
-});
-   
+app.use(express.static(path.join(__dirname, 'client/build'))); 
+
 // Get all signatures.
 app.get('/api/signatures', function(req, res) {
     Signature.find({}).sort({date: 'desc'}).then(eachOne => {
       res.json(eachOne);
       })
-    })
+});
   
 // Post a new signature.
 app.post('/api/signatures', function(req, res) {
@@ -34,6 +33,10 @@ app.post('/api/signatures', function(req, res) {
     }).then(signature => {
       res.json(signature)
     });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 const port = (process.env.PORT || 2019);
